@@ -13,7 +13,7 @@ namespace ConsoleAdventure.Project.Models
     public Item(string name, string desc)
     {
       Name = name;
-      Description = descr;
+      Description = desc;
     }
 
   }
