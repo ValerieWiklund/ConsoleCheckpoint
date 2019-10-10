@@ -2,15 +2,26 @@ using ConsoleAdventure.Project.Interfaces;
 
 namespace ConsoleAdventure.Project.Models
 {
-    public class Game : IGame
-    {
-        public IRoom CurrentRoom { get; set; }
-        public IPlayer CurrentPlayer { get; set; }
+  public class Game : IGame
+  {
 
-        //NOTE Make yo rooms here...
-        public void Setup()
-        {
-            throw new System.NotImplementedException();
-        }
+
+    public IRoom CurrentRoom { get; set; }
+    public IPlayer CurrentPlayer { get; set; }
+
+    //NOTE Make yo rooms here...
+    public void Setup()
+    {
+      CurrentRoom = Aviary;
     }
+
+    public Game(IRoom currentRoom, IPlayer currentPlayer)
+    {
+      CurrentPlayer = currentPlayer;
+      Setup();
+    }
+
+
+
+  }
 }

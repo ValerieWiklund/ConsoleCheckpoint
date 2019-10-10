@@ -12,9 +12,9 @@ namespace ConsoleAdventure.Project.Models
     public Dictionary<string, IRoom> Exits { get; set; }
 
 
-    public void AddExit(IRoom, room)
+    public void AddExit(IRoom room)
     {
-      CollectionExtensions.TryAdd(room.Name, room)
+      Exits.Add(room.Name, room);
     }
 
 
