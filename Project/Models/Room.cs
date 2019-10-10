@@ -9,18 +9,28 @@ namespace ConsoleAdventure.Project.Models
     public string Description { get; set; }
     public List<Item> Items { get; set; }
     public Dictionary<string, IRoom> Exits { get; set; }
+    public Dictionary<string, IItem> Usages { get; set; }
 
 
     public string GetTemplate()
     {
-      string template = $@"You are in the {Name} room. \n
-      As you look around you see {Description}. In the room you see: \n ";
+      string template = $"You are in the {Name} room. \n As you look around you see { Description}. In the room you see: \n ";
       foreach (var i in Items)
       {
         template += $"{i.Name} {i.Description}";
       }
       return template;
     }
+
+    public IRoom Go(string direction)
+    {
+      if (Exits.ContainsKey(direction))
+      {
+        return Exits[direction];
+      }
+      return this;
+    }
+
 
 
     public Room(string name, string desc)
@@ -29,6 +39,8 @@ namespace ConsoleAdventure.Project.Models
       Description = desc;
       Items = new List<Item>();
       Exits = new Dictionary<string, IRoom>();
+      Usages = new Dictionary<string, IItem>();
+
     }
 
 

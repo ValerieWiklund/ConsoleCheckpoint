@@ -10,10 +10,10 @@ namespace ConsoleAdventure.Project.Models
     //NOTE Make yo rooms here...
     public void Setup()
     {
-      Room gb = new Room("Giraffe Barn", " A large three story room with a large split door");
-      Room cy = new Room("Courtyard", "Open air area close to the exit");
-      Room bd = new Room("Bears Area", "Long rectangular shaped area");
-      Room gs = new Room("Gift Shop", "Just like an souvenir shop with stuffed animals and other toys hanging on the walls");
+      Room gb = new Room("Giraffe Barn", " A large three story room with a large split door in the east");
+      Room cy = new Room("Courtyard", "Open air area with a door on the east wall. ");
+      Room bd = new Room("Bears Area", "Long rectangular shaped area with a door on the north wall.");
+      Room gs = new Room("Gift Shop", "Just like an souvenir shop with stuffed animals and other toys hanging on the walls. It is kind of creepy, but there is a door on the north wall, at the far end. ");
       Room ex = new Room("Exit", "This is the exit!!! You won");
 
       gb.Exits.Add("east", cy);
@@ -35,6 +35,11 @@ namespace ConsoleAdventure.Project.Models
       gb.Items.Add(haybales);
       cy.Items.Add(crowbar);
       bd.Items.Add(meat);
+
+      gb.Usages.Add("east", haybales);
+      bd.Usages.Add("north", meat);
+      gs.Usages.Add("north", crowbar);
+
 
       CurrentRoom = gb;
       Player riley = new Player("Riley");

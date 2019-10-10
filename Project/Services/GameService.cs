@@ -14,10 +14,14 @@ namespace ConsoleAdventure.Project.Services
     public void Go(string direction)
     {
       //  get your template for printing the room you are in.
-
-
+      if ()
+        string from = _game.CurrentRoom.Name;
+      _game.CurrentRoom = _game.CurrentRoom.Go(direction);
+      string to = _game.CurrentRoom.Name;
+      Look();
 
     }
+
     public void Help()
     {
       Messages.Add("GO + (direction) - moves you from room to room");
@@ -63,6 +67,11 @@ namespace ConsoleAdventure.Project.Services
     public void TakeItem(string itemName)
     {
       Messages.Add("Taking an Item");
+
+
+
+
+
     }
     ///<summary>
     ///No need to Pass a room since Items can only be used in the CurrentRoom
@@ -71,7 +80,12 @@ namespace ConsoleAdventure.Project.Services
     ///</summary>
     public void UseItem(string itemName)
     {
-      Messages.Add("Using an Item"); ;
+      Messages.Add("Using an Item");
+
+
+
+
+
     }
 
 
