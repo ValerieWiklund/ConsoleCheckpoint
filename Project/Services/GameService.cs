@@ -101,6 +101,7 @@ namespace ConsoleAdventure.Project.Services
       for (int i = 0; i < _game.CurrentRoom.Items.Count; i++)
       {
         var temp = _game.CurrentRoom.Items[i].Name;
+        Messages.Add($"value of {temp}");
         if (itemName != temp)
         {
           Messages.Add($"{itemName} is not in this room");
@@ -124,9 +125,12 @@ namespace ConsoleAdventure.Project.Services
       Messages.Add($" you just used {itemName}");
       // var hold = _game.CurrentRoom.UseItem(itemName);
       var hold = "";
-      hold = _game.CurrentRoom.Usages["haybales"];
-      _game.CurrentRoom.Exits.Add(hold);
+      hold = _game.CurrentRoom.Usages[itemName];
+      // _game.CurrentRoom.Exits.Add(hold);
       Messages.Add($"{hold}");
+      // Messages.Add($"")
+
+
 
       Messages.Add("Using an Item \n");
     }
