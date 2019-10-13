@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ConsoleAdventure.Project.Interfaces;
 
@@ -9,7 +10,8 @@ namespace ConsoleAdventure.Project.Models
     public string Description { get; set; }
     public List<Item> Items { get; set; }
     public Dictionary<string, IRoom> Exits { get; set; }
-    public Dictionary<string, IItem> Usages { get; set; }
+    // public Dictionary<string, (string, IRoom)> Usages { get; set; }
+    public Dictionary<string, string> Usages { get; set; }
 
 
     public string GetTemplate()
@@ -31,6 +33,17 @@ namespace ConsoleAdventure.Project.Models
       return this;
     }
 
+    public IRoom UseItem(string itemName)
+    {
+      string hold = "";
+      if (Usages.TryGetValue(itemName, out hold))
+      {
+        // return hold;
+
+      }
+      return this;
+    }
+
 
 
     public Room(string name, string desc)
@@ -39,7 +52,8 @@ namespace ConsoleAdventure.Project.Models
       Description = desc;
       Items = new List<Item>();
       Exits = new Dictionary<string, IRoom>();
-      Usages = new Dictionary<string, IItem>();
+      Usages = new Dictionary<string, string>();
+
 
     }
 

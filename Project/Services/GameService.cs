@@ -14,8 +14,7 @@ namespace ConsoleAdventure.Project.Services
     public void Go(string direction)
     {
       //  get your template for printing the room you are in.
-      if ()
-        string from = _game.CurrentRoom.Name;
+
       _game.CurrentRoom = _game.CurrentRoom.Go(direction);
       string to = _game.CurrentRoom.Name;
       Look();
@@ -35,7 +34,15 @@ namespace ConsoleAdventure.Project.Services
 
     public void Inventory()
     {
-      Messages.Add("Displaying Inventory");
+      Messages.Add("\n \n Displaying Inventory:");
+      if (_game.CurrentPlayer.Inventory.Count == 0)
+      {
+        Messages.Add("\n You do not have any items to use. \n");
+      }
+      else
+      {
+        Messages.Add(_game.CurrentPlayer.GetTemplate());
+      }
     }
 
     public void Look()
@@ -67,10 +74,21 @@ namespace ConsoleAdventure.Project.Services
     public void TakeItem(string itemName)
     {
       Messages.Add("Taking an Item");
-
-
-
-
+      var hold = _game.CurrentRoom.Items;
+      for (int i = 0; i < hold.Count; i++)
+      {
+        var temp = hold[i].Name;
+        if (itemName == temp)
+        {
+          _game.CurrentPlayer.Inventory.Add(hold[i]);
+          _game.CurrentRoom.Items.Remove(hold[i]);
+          Messages.Add($"{itemName} have been added to your inventory");
+        }
+        else
+        {
+          Messages.Add("No such item");
+        }
+      }
 
     }
     ///<summary>
@@ -80,13 +98,42 @@ namespace ConsoleAdventure.Project.Services
     ///</summary>
     public void UseItem(string itemName)
     {
-      Messages.Add("Using an Item");
+      for (int i = 0; i < _game.CurrentRoom.Items.Count; i++)
+      {
+        var temp = _game.CurrentRoom.Items[i].Name;
+        if (itemName != temp)
+        {
+          Messages.Add($"{itemName} is not in this room");
+        }
+        else
+        {
+          Messages.Add($"{itemName} is in this room.");
+          for (int x = 0; x < _game.CurrentPlayer.Inventory.Count; x++)
+          {
+            var temp2 = _game.CurrentPlayer.Inventory[x].Name;
+            if (itemName != temp2)
+            {
+              Messages.Add("That item is not available");
+            }
+          }
+        }
+      }
 
 
+      // if (itemName == IItem)
+      Messages.Add($" you just used {itemName}");
+      // var hold = _game.CurrentRoom.UseItem(itemName);
+      var hold = "";
+      hold = _game.CurrentRoom.Usages["haybales"];
+      _game.CurrentRoom.Exits.Add(hold);
+      Messages.Add($"{hold}");
 
-
-
+      Messages.Add("Using an Item \n");
     }
+
+
+
+
 
 
 

@@ -16,36 +16,35 @@ namespace ConsoleAdventure.Project.Models
       Room gs = new Room("Gift Shop", "Just like an souvenir shop with stuffed animals and other toys hanging on the walls. It is kind of creepy, but there is a door on the north wall, at the far end. ");
       Room ex = new Room("Exit", "This is the exit!!! You won");
 
-      gb.Exits.Add("east", cy);
+      // gb.Exits.Add("east", cy);
       cy.Exits.Add("west", gb);
 
       cy.Exits.Add("east", bd);
       bd.Exits.Add("west", cy);
 
 
-      bd.Exits.Add("north", gs);
+      // bd.Exits.Add("north", gs);
       gs.Exits.Add("south", bd);
 
-      gs.Exits.Add("north", ex);
+      // gs.Exits.Add("north", ex);
 
-      Item crowbar = new Item("Crowbar", "A heavy, long metal object great for smashing things or prying them open");
-      Item haybales = new Item("Hay Bales", "A large number of hay bales scattered around the room");
+      Item crowbar = new Item("crowbar", "A heavy, long metal object great for smashing things or prying them open");
+      Item haybales = new Item("haybales", "A large number of hay bales scattered around the room");
       Item meat = new Item("Raw meat", "A bucket of raw meat sitting by the entrance");
 
       gb.Items.Add(haybales);
       cy.Items.Add(crowbar);
       bd.Items.Add(meat);
 
-      gb.Usages.Add("east", haybales);
-      bd.Usages.Add("north", meat);
-      gs.Usages.Add("north", crowbar);
+      // gs.Usages.Add("crowbar", ("north", ex));
+      gb.Usages.Add("haybales", "east, cy");
+      // meat.Usages.Add("east", bd);
+
 
 
       CurrentRoom = gb;
       Player riley = new Player("Riley");
       CurrentPlayer = riley;
-
-
 
 
     }

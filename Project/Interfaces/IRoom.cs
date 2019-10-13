@@ -9,11 +9,14 @@ namespace ConsoleAdventure.Project.Interfaces
     string Description { get; set; }
     List<Item> Items { get; set; }
     Dictionary<string, IRoom> Exits { get; set; }
-    Dictionary<string, IItem> Usages { get; set; }
+    // Dictionary<string, (string, IRoom)> Usages { get; set; }
+    Dictionary<string, string> Usages { get; set; }
+
 
 
     string GetTemplate();
     IRoom Go(string direction);
+    IRoom UseItem(string itemName);
   }
 
 }

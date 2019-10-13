@@ -62,15 +62,13 @@ namespace ConsoleAdventure.Project.Controllers
           Print();
           break;
         case "quit":
+        case "q":
           _gameService.Quit();
           break;
         default:
           Console.WriteLine("Invalid Entry");
           break;
       }
-
-
-
     }
 
 
