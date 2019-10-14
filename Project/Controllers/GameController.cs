@@ -14,12 +14,11 @@ namespace ConsoleAdventure.Project.Controllers
     public void Run()
     {
       Console.Clear();
-      //   Console.WriteLine("Enter Player Name:");
-      //   string Input = Console.ReadLine();
       _gameService.Setup();
       Print();
+      bool Playing = true;
 
-      while (true)
+      while (Playing)
       {
         GetUserInput();
       }
@@ -29,7 +28,7 @@ namespace ConsoleAdventure.Project.Controllers
     //NOTE Gets the user input, calls the appropriate command, and passes on the option if needed.
     public void GetUserInput()
     {
-      Console.WriteLine("What would you like to do?");
+      Console.WriteLine(" \n \n What would you like to do?");
       string input = Console.ReadLine().ToLower() + " ";
       string command = input.Substring(0, input.IndexOf(" "));
       string option = input.Substring(input.IndexOf(" ") + 1).Trim();
@@ -38,8 +37,14 @@ namespace ConsoleAdventure.Project.Controllers
       switch (command)
       {
         case "go":
-          _gameService.Go(option);
-          Print();
+          if (option == "north" || option == "south" || option == "east" || option == "west")
+          {
+            _gameService.Go(option);
+            Console.Clear();
+            Print();
+            break;
+          }
+          Console.WriteLine("Invalid Option");
           break;
         case "use":
           _gameService.UseItem(option);
@@ -77,6 +82,7 @@ namespace ConsoleAdventure.Project.Controllers
     //NOTE this should print your messages for the game.
     private void Print()
     {
+
       foreach (string message in _gameService.Messages)
       {
         Console.WriteLine("\t" + message);

@@ -14,10 +14,23 @@ namespace ConsoleAdventure.Project.Services
     public void Go(string direction)
     {
       //  get your template for printing the room you are in.
-
       _game.CurrentRoom = _game.CurrentRoom.Go(direction);
       string to = _game.CurrentRoom.Name;
-      Look();
+      if (to != "")
+      {
+        Look();
+      }
+      else
+      {
+        Messages.Add("Invalid Request");
+        return;
+      }
+      // if (to == "Tiger Den")
+      // {
+      //  return false;
+      // }
+      // Look();
+
 
     }
 
@@ -65,15 +78,14 @@ namespace ConsoleAdventure.Project.Services
 
     public void Setup()
     {
-      Messages.Add($"Welcome {_game.CurrentPlayer.Name}");
-      Messages.Add("You were at an evening charity event for the Zoo. You were enojoying the evening so much, you didn't realize you are all alone. After looking at your watch, you realize the event has been over for awhile. There isn't anybody around to show you out.");
+      Messages.Add($"\n \nWelcome! \n \n");
+      Messages.Add("You were at an evening charity event for the Zoo. You were enjoying the evening so much, you didn't realize how late it was. Now, there isn't anybody else around to show you the way out. Hopefully you will be able to find your way out. \n");
       Look();
 
     }
     ///<summary>When taking an item be sure the item is in the current room before adding it to the player inventory, Also don't forget to remove the item from the room it was picked up in</summary>
     public void TakeItem(string itemName)
     {
-      Messages.Add("Taking an Item");
       var hold = _game.CurrentRoom.Items;
       for (int i = 0; i < hold.Count; i++)
       {
@@ -82,7 +94,7 @@ namespace ConsoleAdventure.Project.Services
         {
           _game.CurrentPlayer.Inventory.Add(hold[i]);
           _game.CurrentRoom.Items.Remove(hold[i]);
-          Messages.Add($"{itemName} have been added to your inventory");
+          Messages.Add($"The {itemName} has been added to your inventory");
         }
         else
         {
@@ -101,14 +113,12 @@ namespace ConsoleAdventure.Project.Services
       for (int i = 0; i < _game.CurrentRoom.Items.Count; i++)
       {
         var temp = _game.CurrentRoom.Items[i].Name;
-        Messages.Add($"value of {temp}");
         if (itemName != temp)
         {
           Messages.Add($"{itemName} is not in this room");
         }
         else
         {
-          Messages.Add($"{itemName} is in this room.");
           for (int x = 0; x < _game.CurrentPlayer.Inventory.Count; x++)
           {
             var temp2 = _game.CurrentPlayer.Inventory[x].Name;
@@ -119,26 +129,14 @@ namespace ConsoleAdventure.Project.Services
           }
         }
       }
-
-
       // if (itemName == IItem)
-      Messages.Add($" you just used {itemName}");
       // var hold = _game.CurrentRoom.UseItem(itemName);
       var hold = "";
       hold = _game.CurrentRoom.Usages[itemName];
       // _game.CurrentRoom.Exits.Add(hold);
       Messages.Add($"{hold}");
       // Messages.Add($"")
-
-
-
-      Messages.Add("Using an Item \n");
     }
-
-
-
-
-
 
 
     //Constructor

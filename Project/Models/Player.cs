@@ -23,7 +23,7 @@ namespace ConsoleAdventure.Project.Models
       string template = $" \n Your Inventory includes: \n \n ";
       foreach (var i in Inventory)
       {
-        template += $"\t{i.Name} {i.Description} \n";
+        template += $"\t{i.Name} \n";
       }
       return template;
     }
