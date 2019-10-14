@@ -46,8 +46,8 @@ namespace ConsoleAdventure.Project.Models
 
       // Item crowbar = new Item("crowbar", "A heavy, long metal object great for smashing things or prying them open");
       // Item haybales = new Item("haybales", "A large number of hay bales scattered around the room");
-      Item meat = new Item("meat", " By the door,  there is a bucket of meat. Obviously, the keepers forgot to throw the rest of the meat to the bears.");
-      Item flashlight = new Item("flashlight", "In the middle of the aisle, there is a flashlight.");
+      Item meat = new Item("meat", " By the door,  there is a bucket of raw (meat).");
+      Item flashlight = new Item("flashlight", "In the middle of the aisle, there is a (flashlight).");
 
       // gb.Items.Add(haybales);
       // cy.Items.Add(crowbar);

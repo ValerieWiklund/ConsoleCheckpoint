@@ -14,6 +14,7 @@ namespace ConsoleAdventure.Project.Services
     public void Go(string direction)
     {
       //  get your template for printing the room you are in.
+
       _game.CurrentRoom = _game.CurrentRoom.Go(direction);
       string to = _game.CurrentRoom.Name;
       if (to == "Tiger Den")
@@ -30,7 +31,7 @@ namespace ConsoleAdventure.Project.Services
       }
       if (to == "Giraffe Barn")
       {
-        Messages.Add("It is very dark in here. There is no way to see if there are any exits or giraffes that might step on you or kick you.");
+        Messages.Add(" \n \n It is very dark in here. There is no way to see if there are any exits or giraffes that might step on you or kick you.");
       }
       else if (to != "")
       {
