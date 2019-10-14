@@ -12,11 +12,11 @@ namespace ConsoleAdventure.Project.Models
     {
 
       Room av = new Room("Aviary", "the room is filled with cages of large predatory birds. This is a scary place. \n");
-      Room mh = new Room("Monkey House", "All around the outer walls are the monkey cages.");
+      Room mh = new Room("Monkey House", "all around the outer walls are the monkey cages.");
       Room rp = new Room("Red Panda Enclosure", "the adorable red pandas are sleeping soundly. As you tiptoe past them, you see an exit to the south.");
       Room td = new Room("Tiger Den", "you realize the tigers heard you coming. As you step into the room, they pounce. You die.");
       Room gb = new Room("Giraffe Barn", "It is very dark in here. There is no way to see if there are any exits or giraffes that might step on you or kick you.");
-      Room cy = new Room("Courtyard", "a beautiful open air courtyard. Are you free at last? No! it is completely walled it.");
+      Room cy = new Room("Courtyard", "a beautiful open air courtyard. Are you free at last? No! it is completely walled.");
       Room bd = new Room("Bear Area", "a long rectangular area with a door on the north wall. Unfortunately, all three of the bears are laying in front of it. ");
       Room gs = new Room("Gift Shop", "a normal souvenir shop with stuffed animals and other toys hanging on the walls. It is kind of creepy. ");
       Room ex = new Room("Exit", "This is the exit!!! You won");

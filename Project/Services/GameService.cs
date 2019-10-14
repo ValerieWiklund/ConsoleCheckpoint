@@ -16,7 +16,23 @@ namespace ConsoleAdventure.Project.Services
       //  get your template for printing the room you are in.
       _game.CurrentRoom = _game.CurrentRoom.Go(direction);
       string to = _game.CurrentRoom.Name;
-      if (to != "")
+      if (to == "Tiger Den")
+      {
+        Console.Clear();
+        Console.WriteLine(" \n \n You are unsure of where you are. As you move forward into the pen, you suddenly recognize where you are - the tiger's den. \nYou rush back to the door. \n \n It  won't open!! Soon, you are surrounded by the tigers. They don't pause to play with their food, they just pounce and ... you DIE. \n \n \n");
+        Quit();
+      }
+      if (to == "Exit")
+      {
+        Console.Clear();
+        Console.WriteLine(" \n \n Finally! The exit. You survived your ordeal and you are free. \n \n \n Congratulations for winning the game. \n \n \n");
+        Quit();
+      }
+      if (to == "Giraffe Barn")
+      {
+        Messages.Add("It is very dark in here. There is no way to see if there are any exits or giraffes that might step on you or kick you.");
+      }
+      else if (to != "")
       {
         Look();
       }
@@ -25,11 +41,8 @@ namespace ConsoleAdventure.Project.Services
         Messages.Add("Invalid Request");
         return;
       }
-      // if (to == "Tiger Den")
-      // {
-      //  return false;
-      // }
-      // Look();
+
+
 
 
     }
